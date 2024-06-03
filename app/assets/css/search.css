@@ -1,4 +1,4 @@
-/* 
+/*
 * Copyright 2021-2024 SnehTV, Inc.
 * Licensed under MIT (https://github.com/mitthu786/TS-JioTV/blob/main/LICENSE)
 * Created By : TechieSneh
@@ -8,13 +8,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 20px 0px 20px;
   color: #fff;
 }
 
 #userButtons {
   display: flex;
   gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  font-family: fantasy;
+  text-align-last: center;
 }
 
 @media (max-width: 768px) {
@@ -29,16 +33,20 @@ header {
   }
 
   #jtvh1 img {
-    width: 45px;
-  }
-
-  #userButtons {
-    flex-direction: row;
-    justify-content: center;
+    width: 250px;
+    height: 100px;
   }
 
   #userButtons button {
     font-size: 12px;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  select {
+    width: 100%;
   }
 }
 
@@ -49,6 +57,9 @@ header {
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+  gap: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 label {
@@ -64,78 +75,92 @@ select {
   font-size: 14px;
 }
 
-@media screen and (max-width: 768px) {
-  .filters {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  label {
-    margin-bottom: 5px;
-  }
-
-  select {
-    width: 100%;
-  }
-}
-
 /* LOGIN BUTTON CSS */
-#userButtons {
-  font-size: 14px;
-  font-family: fantasy;
-  text-align-last: center;
+#loginButton,
+#PlayListButton,
+#homeButton,
+#fullscreen {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 32px;
+  gap: 10px;
+  width: 127px;
+  height: 46px;
+  border: 0.5px solid #FFFFFF;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-#loginButton {
-  border-radius: 10px;
-  border: 2px solid #f0f0f0;
+#loginButton:hover,
+#PlayListButton:hover,
+#homeButton:hover,
+#loginButton:active,
+#PlayListButton:active,
+#homeButton:active {
+  background-color: #FFFFFF;
+  color: #232528;
 }
 
-#loginButton:hover {
-  background-color: #3cc700;
-  border: 3px solid #3cc700;
-}
-
-#refreshButton {
-  border-radius: 10px;
-  border: 2px solid #f0f0f0;
-}
-
-#refreshButton:hover {
-  background-color: #00bdc7;
-  border: 3px solid #00bdc7;
-}
-
+#refreshButton, 
 #logoutButton {
-  border-radius: 10px;
-  border: 2px solid #f0f0f0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-#logoutButton:hover {
-  background-color: #ff5252;
-  border: 3px solid #ff5252;
+#refreshButton img, 
+#logoutButton img {
+  width: 100%;
+  height: 100%;
 }
 
-#PlayListButton {
-  border-radius: 10px;
-  border: 2px solid #f0f0f0;
-}
-
-#PlayListButton:hover {
-  background-color: #ffe552;
-  border: 3px solid #ffe552;
+#refreshButton:focus, 
+#logoutButton:focus {
+  border: none;
 }
 
 /* SEARCH BAR CSS */
 #searchBar {
-  width: 45%;
-  height: 35px;
-  border-radius: 16px;
-  border: 1px solid #eaeaea;
-  padding: 5px 10px;
-  font-size: 14px;
-  font-family: fantasy;
-  margin-left: 28%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  gap: 10px;
+  margin: 0 auto;
+  width: 60%;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.4px;
+  color: #FFFFFF;
+}
+
+#searchBar::placeholder {
+  opacity: 0.5;
+  text-align: center;
 }
 
 #searchWrapper {
@@ -143,8 +168,63 @@ select {
 }
 
 #searchWrapper::after {
-  content: "🔍";
+  background-image: url("app/assets/main_assets/Search_alt_light.svg");
+  background-size: cover;
   position: absolute;
   top: 7px;
   right: 29%;
+  width: 24px;
+  height: 24px;
+}
+
+#langFilter,
+#genreFilter,
+#catchupFilter {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 12px;
+  gap: 10px;
+  width: 160px;
+  height: 46px;
+  background: #FFFFFF;
+  border: 0.5px solid #FFFFFF;
+  border-radius: 8px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #232528;
+  text-align: left;
+}
+
+/* Placeholder style for the select element */
+#langFilter option:first-child,
+#genreFilter option:first-child,
+#catchupFilter option:first-child {
+  color: #808080;
+}
+
+/* Remove top border from options */
+#langFilter option,
+#genreFilter option,
+#catchupFilter option {
+  border-top: none;
+}
+
+/* Card CSS */
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
