@@ -49,21 +49,18 @@ function renderLoginForm($user)
 
   <body>
     <div>
-      <img src="https://i.ibb.co/BcjC6R8/jiotv.png" alt="JioTV Logo" width="100px" height="100px" style="margin-left: auto; margin-right: auto; display: block" />
-      <h1>JioTV Login</h1>
-      <hr />
+    <img src="https://i.ibb.co/BcjC6R8/jiotv.png" alt="JioTV Logo" width="250px" height="250px" style="margin-left: auto; margin-right: auto; display: block" />
       <div class="alert" style="display: none">
         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
       </div>
       <tab-container>
-        <label class="toggleLabel">Verify OTP</label>
         <tab-content>
           <form action="<?php echo $_SERVER['PHP_SELF'] . '?user=' . $user; ?>" method="POST">
             <div class="formcontainer">
               <div class="container">
                 <input id="otp" name="otp" type="text" minlength="6" maxlength="6" placeholder="Enter OTP" <?php echo isset($_POST['otp']) ? 'value="' . htmlspecialchars($_POST['otp']) . '"' : ''; ?> />
               </div>
-              <button type="submit" style="display: block; width: 100%; padding: 10px; background-color: #007BFF; color: white; border: none; border-radius: 5px; font-size: 14px;">Verify</button>
+              <button type="submit" style="display: block; width: 100%; padding: 10px; background-color: #BA3B46; color: white; border: none; height: 46px; border-radius: 8px; font-size: 14px; font-weight: 600;">VERIFY</button>
               <p style="text-align: center; font-size: small; opacity: 0.5">
                 JioTV [ SNEH-TV ]
               </p>
@@ -73,25 +70,107 @@ function renderLoginForm($user)
       </tab-container>
     </div>
   </body>
+  <style>
+        body{
+      background-color: #232528;
+      overflow: hidden;
+      position: relative;
+    }
+    #otp {
+  border: none;
+  border-bottom: 2px solid #FFFFFF; /* Bottom border */
+  background-color: transparent;
+  padding: 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #FFFFFF; /* Text color */
+  outline: none;
+  transition: border-color 0.3s;
+}
 
+#otp:focus {
+  border-color: #BA3B46;
+}
+
+
+    .box-1 {
+      position: fixed;
+      transform: rotate(80deg); 
+      top: 0;
+      left: 0;
+    }
+
+    .box-2 {
+      position: fixed;
+      transform: rotate(80deg); 
+      top: 0;
+      right: -500px;
+    }
+
+    .wave {
+      position: absolute;
+      opacity: .4;
+      width: 1500px;
+      height: 1300px;
+      border-radius: 43%;
+      margin-left: -250px;
+  margin-top: -250px;
+    }
+
+    .wave.-one {
+      animation: rotate 10000ms infinite linear;
+      opacity: 5%;
+      background: white;
+    }
+
+    .wave.-two {
+      animation: rotate 6000ms infinite linear;
+      opacity: 10%;
+      background: white;
+    }
+
+    @keyframes rotate {
+      from {transform: rotate(0deg);}
+      to {transform: rotate(360deg);}
+    }
+  </style>
+</head>
+<body>
+  <div class='box-1'>
+    <div class='wave -one'></div>
+    <div class='wave -two'></div>
+  </div>
+  <div class='box-2'>
+    <div class='wave -one'></div>
+    <div class='wave -two'></div>
+  </div>
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const params = new URLSearchParams(window.location.search);
       const alertEl = document.querySelector(".alert");
 
-      if (params.has("success")) {
-        showAlert(alertEl, "Success!", "You have been logged in", "success", "#4CAF50");
-        const currentProtocol = window.location.protocol;
-        const currentHost = window.location.host;
-        const currentPathname = window.location.pathname.replace("app/login/otpVerify.php", "index.php");
-        setTimeout(function() {
-          const newURL = currentProtocol + "//" + currentHost + currentPathname;
-          window.location.replace(newURL);
-        }, 500);
-      } else if (params.has("error") || params.has("OtpError")) {
-        const errorMsg = params.get("msg");
-        showAlert(alertEl, "Error!", errorMsg, "error", "#f44336");
-      }
+if (params.has("success")) {
+  showAlert(alertEl, "Success!", "You have been logged in", "success", "#70c1b3");
+  const currentProtocol = window.location.protocol;
+  const currentHost = window.location.host;
+  const currentPathname = window.location.pathname.replace("app/login/otpVerify.php", "index.php");
+  setTimeout(function() {
+    const newURL = currentProtocol + "//" + currentHost + currentPathname;
+    window.location.replace(newURL);
+  }, 500);
+} else if (params.has("error") || params.has("OtpError")) {
+  const errorMsg = params.get("msg");
+  showAlert(alertEl, "Error!", errorMsg, "error", "#BA3B46");
+}
+
+function showAlert(element, title, message, type, color) {
+  element.innerHTML = `
+    <div class="alert ${type}" style="background-color: ${color}; border-radius: 8px;">
+      <strong>${title}</strong> ${message}
+    </div>
+  `;
+}
+
 
     });
 
@@ -109,6 +188,23 @@ function renderLoginForm($user)
       alertContainer.style.display = "none";
     }
   </script>
+  <style>
+      .formcontainer {
+    position: relative;
+    z-index: 999; /* Set the z-index to bring this content on top of other content */
+}
+@media only screen and (max-width: 768px) {
+  .wave {
+      position: absolute;
+      opacity: .4;
+      width: 600px;
+      height: 1000px;
+      border-radius: 43%;
+      margin-left: -250px;
+     margin-top: -250px;
+    }
+}
+  </style>
 
   </html>
 
