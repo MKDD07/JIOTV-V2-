@@ -24,76 +24,376 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
-
 <body>
     <header>
         <div id="jtvh1">
-            <img src="https://ik.imagekit.io/techiesneh/tv_logo/jtv-plus_TMaGGk6N0.png" alt="JIOTV+">
+            <img src="app/assets/main_assets/main_logo.png" alt="JIOTV+">
         </div>
         <div id="userButtons">
             <button id="loginButton">Login</button>
-            <button id="refreshButton">Refresh</button>
             <button id="logoutButton">Logout</button>
             <button id="PlayListButton">PlayList</button>
+            <button id="refreshButton">
+                <img src="app/assets/main_assets/reload.svg" alt="Refresh">
+            </button>
         </div>
-    </header></br>
-    <div id="searchWrapper">
-        <input type="text" name="searchBar" id="searchBar" placeholder="Search ..." />
+    </header>
+    <br>
+    <div class="frame-120">
+        <div class="search-menu">
+            <input type="text" name="searchBar" id="searchBar" placeholder="Search for Zee TV HD" />
+            <img src="app/assets/main_assets/search_alt_light.svg" alt="Search Icon" class="search-icon">
+        </div>
+    </div>
+    <div class="filters">
+        <select id="catchupFilter">
+            <option value="">CATCHUP</option>
+            <option value="">All</option>
+            <option value="y">True</option>
+            <option value="n">False</option>
+        </select>
+
+        <select id="genreFilter">
+            <option value="">GENRE FILTER</option>
+            <option value="">All</option>
+            <option value="Entertainment">Entertainment</option>
+            <option value="Movies">Movies</option>
+            <option value="Kids">Kids</option>
+            <option value="Sports">Sports</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Infotainment">Infotainment</option>
+            <option value="News">News</option>
+            <option value="Music">Music</option>
+            <option value="Devotional">Devotional</option>
+            <option value="Business">Business</option>
+            <option value="Educational">Educational</option>
+            <option value="Shopping">Shopping</option>
+            <option value="JioDarshan">JioDarshan</option>
+        </select>
+
+        <select id="langFilter">
+            <option value="">LANGUAGE</option>
+            <option value="">All</option>
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+            <option value="Marathi">Marathi</option>
+            <option value="Punjabi">Punjabi</option>
+            <option value="Urdu">Urdu</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Malayalam">Malayalam</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Gujarati">Gujarati</option>
+            <option value="Odia">Odia</option>
+            <option value="Telugu">Telugu</option>
+            <option value="Bhojpuri">Bhojpuri</option>
+            <option value="Kannada">Kannada</option>
+            <option value="Assamese">Assamese</option>
+            <option value="Nepali">Nepali</option>
+            <option value="French">French</option>
+        </select>
     </div>
     <div id="content">
         <div class="container">
-            <div class="filters">
-                <label for="catchupFilter">Catchup:</label>
-                <select id="catchupFilter">
-                    <option value="">All</option>
-                    <option value="y">True</option>
-                    <option value="n">False</option>
-                </select>
-
-                <label for="genreFilter">Genre:</label>
-                <select id="genreFilter">
-                    <option value="">All</option>
-                    <option value="Entertainment">Entertainment</option>
-                    <option value="Movies">Movies</option>
-                    <option value="Kids">Kids</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Lifestyle">Lifestyle</option>
-                    <option value="Infotainment">Infotainment</option>
-                    <option value="News">News</option>
-                    <option value="Music">Music</option>
-                    <option value="Devotional">Devotional</option>
-                    <option value="Business">Business</option>
-                    <option value="Educational">Educational</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="JioDarshan">JioDarshan</option>
-                </select>
-
-                <label for="langFilter">Language:</label>
-                <select id="langFilter">
-                    <option value="">All</option>
-                    <option value="Hindi">Hindi</option>
-                    <option value="English">English</option>
-                    <option value="Marathi">Marathi</option>
-                    <option value="Punjabi">Punjabi</option>
-                    <option value="Urdu">Urdu</option>
-                    <option value="Bengali">Bengali</option>
-                    <option value="Malayalam">Malayalam</option>
-                    <option value="Tamil">Tamil</option>
-                    <option value="Gujarati">Gujarati</option>
-                    <option value="Odia">Odia</option>
-                    <option value="Telugu">Telugu</option>
-                    <option value="Bhojpuri">Bhojpuri</option>
-                    <option value="Kannada">Kannada</option>
-                    <option value="Assamese">Assamese</option>
-                    <option value="Nepali">Nepali</option>
-                    <option value="French">French</option>
-                </select>
-            </div>
             <div id="charactersList" class="row">
             </div>
         </div>
     </div>
-    <script src="app/assets/js/search.js"></script>
-</body>
+    <img src="app/catchup/assets/main_assets/felix.png" alt="Felix" class="watermark" id="felixImage">
+    <script>
+        let clickCount = 0;
+        const felixImage = document.getElementById('felixImage');
 
+        felixImage.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount === 3) {
+                window.location.href = 'app/assets/main_assets/felix.html';
+            }
+        });
+    </script>
+    <script src="app/assets/js/search.js"></script>
+    <style>
+        .watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            opacity: 0.25;
+            z-index: 1000;
+        }
+
+        .row{
+            display:flex;
+            justify-content: center;
+        }
+#logoutButton
+ {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 32px;
+  gap: 10px;
+  width: 127px;
+  height: 46px;
+  border: 0.5px solid #FFFFFF;
+  border-radius: 8px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+#logoutButton:hover, #logoutButton:active {
+  background-color: #FFFFFF;
+  color: #232528;
+}
+.card-title{
+    display:flex;
+    margin:2px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+}
+#searchBar {
+    padding-left: 20px; /* Padding on the left */
+    padding-right: 40px; /* Adjust this value based on the width of the search icon */
+    height: 36px; /* Adjust to match your design */
+    box-sizing: border-box;
+    background: url('app/assets/main_assets/search_alt_light.svg') no-repeat right center;
+}
+/* Frame 120 */
+.frame-120 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 6px;
+    gap: 10px;
+
+    width: auto;
+    height: 46px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+/* Search Menu */
+.search-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 20px;
+    gap: 10px;
+
+    margin: 0 auto;
+    width: 800px;
+    height: 46px;
+
+    background: #393A3D;
+    border-radius: 8px;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+#searchBar {
+    width: calc(100% - 44px); /* Adjust the width to fill the space excluding the icon */
+    height: 24px;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 1.0px;
+
+    color: #FFFFFF;
+    background: none;
+    border: none;
+    outline: none;
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+
+.search-icon {
+    margin: 0 auto;
+    width: 24px;
+    height: 24px;
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+.ellipse-65,
+.ellipse-66,
+.vector-109 {
+    position: absolute;
+    border: 1px solid #FFFFFF;
+}
+
+.ellipse-65 {
+    left: 20.83%;
+    right: 29.17%;
+    top: 20.83%;
+    bottom: 29.17%;
+}
+
+.ellipse-66 {
+    left: 33.33%;
+    right: 41.67%;
+    top: 33.33%;
+    bottom: 41.67%;
+}
+
+.vector-109 {
+    left: 70.83%;
+    right: 16.67%;
+    top: 70.83%;
+    bottom: 16.67%;
+}
+.search-menu:hover, .search-menu:active{
+    border:1px solid #fff;
+
+}
+.watermark {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.25;
+    z-index: 1000;
+    width:30px;
+    height:30px;
+}
+@media only screen and (max-width: 768px) {
+    .search-menu {
+        width: 90%;
+    }
+
+    .filters {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-content: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #langFilter, #genreFilter, #catchupFilter {
+        font-size: 12px;
+        /* 'font-height' is not a valid property */
+        /* width: 90%; */ /* You already set width to 90% in .filters, redundant */
+        gap: 5px;
+        padding: 6px;
+        display: flex;
+        flex-wrap: wrap;
+        width:30%;
+    }
+
+    #jtvh1 img {
+        width: 100px;
+        height: auto;
+    }
+
+    .header {
+        width: 100%;
+        /* 'flex-direction' and 'flex-wrap' are already set in .filters, redundant */
+        justify-content: space-between;
+        padding:none;
+    }
+
+    .userButtons {
+        padding-right: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    /* Added space between selectors for clarity */
+    #loginButton,
+    #logoutButton,
+    #PlayListButton {
+        width: auto;
+        font-size: 8px;
+        /* 'font-height' is not a valid property */
+        /* font-height: 12px; */ /* You already set font-size to 8px, redundant */
+    }
+    
+}
+@media only screen and (max-width: 768px) {
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Center-aligning #jtvh1 */
+    #jtvh1 {
+        text-align: center;
+    }
+
+    /* Adjusting userButtons to stack vertically */
+    #userButtons {
+        margin-top: 10px; /* Adding some spacing between jtvh1 and userButtons */
+    }
+    #userButtons{
+        padding-right:0px;
+    }
+    .container{
+        display:flex;
+        padding:5px;
+    }
+    .card, .card-body
+    {
+        width: 160px;
+        height: auto;
+    }
+    .card-title{
+        height:54px;
+    }
+    .col-6,
+.col-sm-4,
+.col-md-3,
+.col-lg-3,
+.col-xl-2 {
+    width: auto;
+}
+
+}
+@media only screen and (max-width: 375px) 
+{
+    #loginButton,
+    #logoutButton,
+    #PlayListButton{
+        font-size:12px;
+        line-height 1.2em;
+        padding-left:16px;
+        padding-right:16px;
+    }
+    }
+    @media only screen and (max-width: 320px) 
+    {
+        .filters{
+            display:flex;
+            flex-direction: column;
+        }
+        #langFilter, #genreFilter, #catchupFilter {
+            width: 100%;
+        }
+    }
+    </style>
+</body>
 </html>
