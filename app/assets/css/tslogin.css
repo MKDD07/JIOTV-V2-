@@ -8,14 +8,9 @@ html,
 body {
   display: flex;
   justify-content: center;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: Roboto,;
   font-size: 15px;
   color: #ffffff;
-}
-
-body {
-  background-color: #1d232a;
-  background-size: cover;
 }
 
 /* form {
@@ -70,6 +65,8 @@ span.psw {
 .alert {
   padding: 20px;
   color: white;
+  background-color:#BA3B46;
+  border-radius: 8px;
 }
 
 .closebtn {
@@ -133,7 +130,7 @@ p span {
 
 tab-container {
   display: var(--tab-display);
-  margin-top: 50px;
+  margin: 10px;
   /* grid-template-columns: 1fr 1fr; */
   grid-template-rows: auto 1fr;
   border: solid rgba(255, 255, 255, 0.03);
@@ -182,3 +179,5 @@ input#tabToggle03:checked ~ tab-content:not(:nth-of-type(3)),
 input#tabToggle04:checked ~ tab-content:not(:nth-of-type(4)) {
   display: none;
 }
+
+
